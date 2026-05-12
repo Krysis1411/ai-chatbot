@@ -17,8 +17,8 @@ if not api_key:
 # Configure Gemini API
 genai.configure(api_key=api_key)
 
-# Use the gemini-1.5-pro model as it's the standard for general tasks
-model = genai.GenerativeModel('gemini-1.5-pro')
+# Use the gemini-1.5-flash model as it's universally available and very fast
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Dictionary to store chat sessions in memory for simplicity
 # In a real app, use a database or session storage
