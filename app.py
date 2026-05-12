@@ -8,8 +8,14 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# Try to get the API key from GEMINI_API_KEY first, then fallback to GOOGLE_API_KEY
+api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+
+if not api_key:
+    print("WARNING: API Key not found in environment variables!")
+
 # Configure Gemini API
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+genai.configure(api_key=api_key)
 
 # Use the gemini-1.5-pro model as it's the standard for general tasks
 model = genai.GenerativeModel('gemini-1.5-pro')
