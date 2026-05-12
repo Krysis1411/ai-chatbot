@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Nexus AI</h2>
+                <button class="new-chat-btn"><i class="fas fa-plus"></i> New Chat</button>
+            </div>
+            <div class="sidebar-content">
+                <div class="history-item active">
+                    <i class="far fa-message"></i>
+                    <span>Current Session</span>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar"><i class="fas fa-user"></i></div>
+                    <span>User</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <h1>Nexus AI Assistant</h1>
+                <p>Powered by Gemini 1.5 Pro</p>
+            </header>
+            
+            <div class="messages-area" id="messages-area">
+                <!-- Welcome Message -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-icon"><i class="fas fa-robot"></i></div>
+                    <h2>How can I help you today?</h2>
+                    <div class="suggestion-chips">
+                        <button class="chip" onclick="document.getElementById('message-input').value='Write a python script to reverse a string'; document.getElementById('send-btn').click();">Write a Python script</button>
+                        <button class="chip" onclick="document.getElementById('message-input').value='Explain quantum computing in simple terms'; document.getElementById('send-btn').click();">Explain quantum computing</button>
+                        <button class="chip" onclick="document.getElementById('message-input').value='Help me plan a 3-day trip to Tokyo'; document.getElementById('send-btn').click();">Plan a trip</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-box">
+                    <textarea id="message-input" placeholder="Message Nexus AI..." rows="1"></textarea>
+                    <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="footer-text">
+                    Nexus AI can make mistakes. Consider verifying important information.
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Template for messages -->
+    <template id="message-template">
+        <div class="message-wrapper">
+            <div class="message">
+                <div class="avatar"></div>
+                <div class="content">
+                    <div class="sender-name"></div>
+                    <div class="text"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
